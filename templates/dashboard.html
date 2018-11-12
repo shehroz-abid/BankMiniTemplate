@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Hello {{data[0][1]}}</h2>
+  <p></p>
+    <form action="/UpdatePassword", method="get">
+        <button type="submit" class="btn btn-info">Change Password</button>
+    </form>
+    <form action="/UpdateAmount", method="get">
+        <button type="submit" class="btn btn-info">Update Amount</button>
+    </form>
+    <form action="/SignOut", method="post">
+        <button type="submit" class="btn btn-info">Sign Out</button>
+    </form>
+  <table class="table">
+    <thead>
+
+      <tr>
+
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Amount</th>
+        <th>Is Admin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+
+          <script>
+            data = {{data}};
+            var text = "";
+            var i;
+            for (i = 0; i < data[0].length; i++) {
+            text += data[0][i];
+            }
+            document.getElementById("demo").innerHTML = text;
+           </script>
+
+        <td>{{data[0][0]}}</td>
+        <td>{{data[0][1]}}</td>
+        <td>{{password}}</td>
+        <td>{{data[0][3]}}</td>
+        <td>{{data[0][4]}}</td>
+        <td>{{amount}}</td>
+        <td>{{data[0][6]}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

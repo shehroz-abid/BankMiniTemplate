@@ -1,0 +1,73 @@
+Create New User (All data require)--> Username, password, Firstname, Lastname, IsAdmin, AmountAdded.
+
+User functions: SignUp(), SignIn(), ChangePassword(), CheckAmmount(), AddAmmount(), DeductAmount().(All functions can applicable for same userID)
+
+User Admin functions: UserFunctions(), DeleteUser().(Can delt any user by userID)
+
+
+
+Sign up:
+
+User--> Data--> Values(username) exist --> Sign up Error User already exist.
+User--> Data--> Values(username) NOT exist -->  Sign up Done.
+
+
+
+
+Login:
+
+User--> Data--> Values(username & password) exist --> Login Done.
+User--> Data--> Values(username & password) NOT exist --> Login Error User does not exist. 
+
+
+
+
+Delete user:
+
+If user delete account--> check is admin --> True --> DeleteUser().
+If user delete account--> check is admin --> False --> Return Message (User is not Admin).
+
+
+
+Queries:
+
+Sign up
+
+INSERT INTO `User` (`user_id`, `username`, `password`, `firstname`, `lastname`, `amount`, `is_admin`)
+ VALUES ('1', 'abc.def', '123456', 'Abc', 'Def', '10000', '1');
+
+IF EXISTS (SELECT * FROM User WHERE username = "username")
+print("Username already exist")
+ELSE
+INSERT INTO User
+VALUES (userid, username, password, firstname, lastname, amount, isAdmin)
+
+
+Sign In
+
+IF EXISTS (SELECT * FROM User WHERE username = "username" && password = "password")
+ELSE
+print("Incorrect Credential")
+
+
+Delete User
+
+IF ( SELECT * FROM User WHERE username="current_username && isAdmin="1")
+    IF EXIST( SELECT * FROM User WHERE username="username")
+        DELETE FROM User WHERE username="username"
+    ELSE
+        print("User with username" + username + " doesnot exist")
+ELSE
+    print("You are not an Admin So you Do not have permission to delete")
+
+
+Update Amount
+
+SELECT amount FROM User WHERE username="username"
+
+IF Amount Deduct(newamount = Amount - DeductAmount)
+ELSE Amount Added(newamount = Amount + AddedAmount)
+
+UPDATE User
+SET amount = 'newamount'
+WHERE username = "username"
