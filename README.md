@@ -1,7 +1,15 @@
 # BankMiniTemplate
-# Template Folder contains the HTML templates.
-# MainUser is a user class which contains the data of Logged In User.
-# Flask.py file contains all Apis.
-# Username & Password (For Test)
-UserName: demo1  Password:123456   
-UserName: demo2  Password:123456
+This is the demo application for python flask with Mysql.
+# Prerequisites
+-Install Xampp & Run Myphpadmin for DB.<br />
+-Install PyCharm or any tool suitable to develop python application.<br />
+###### Install the required dependencies:
+-```Install pip```<br />
+-```Install pip flask```<br />
+-```Install pip mysql```<br />
+
+# Install
+-Clone this repository<br />
+```git clone https://github.com/shehroz-abid/BankMiniTemplate.git```<br />
+-Import the database file BankDB.sql in phpmyadmin.<br />
+-Run the file Flask.py to run the application.<br />
