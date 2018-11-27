@@ -12,4 +12,5 @@ This is the demo application for python flask with Mysql.
 -Clone this repository<br />
 ```git clone https://github.com/shehroz-abid/BankMiniTemplate.git```<br />
 -Import the database file BankDB.sql in phpmyadmin.<br />
--Run the file Flask.py to run the application.<br />
+-Import the project in PyCharm.<br />
+-Run the file Flask.py in PyCharm to run the application.<br />
