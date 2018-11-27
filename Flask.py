@@ -20,8 +20,8 @@ api = Api(app)
 
 login_user = MainUser()
 
-# Update Method to update the Amount after Adding and Deducting
 
+# Home Page
 
 @app.route('/')
 def main():
@@ -35,6 +35,8 @@ def main():
     except Exception as exception:
         return {'error': str(exception)}
 
+
+# Logout the user
 
 @app.route('/SignOut', methods=['GET'])
 def sign_out():
@@ -63,6 +65,8 @@ def success():
     else:
         return render_template('templates/production/login.html')
 
+
+# Sign In Already Created User
 
 @app.route('/SignInUser', methods=['POST', 'GET'])
 def sign_in_user():
@@ -113,6 +117,8 @@ def sign_in_user():
         return render_template('templates/production/login.html')
 
 
+# Show All Created Users
+
 @app.route('/GetDataAll', methods=['GET'])
 def get_all_data():
 
@@ -133,6 +139,8 @@ def get_all_data():
     except Exception as exception:
         return {'error': str(exception)}
 
+
+# Update Method to update the Password
 
 @app.route('/UpdatePassword', methods=['POST', 'GET'])
 def update_password():
@@ -166,6 +174,8 @@ def update_password():
         return render_template('templates/production/login.html')
 
 
+# Update Method to update the Amount after Adding and Deducting
+
 @app.route('/UpdateAmount', methods=['POST', 'GET'])
 def update_amount():
     if request.method == 'POST':
@@ -195,8 +205,8 @@ def update_amount():
     else:
         return render_template('templates/production/login.html')
 
-# Delete Method to delete user
 
+# Delete Method to delete user
 
 @app.route('/DeleteUser/<string:delt_username>', methods=['DELETE'])
 def delete_user(delt_username):
@@ -226,8 +236,8 @@ def delete_user(delt_username):
     except Exception as exception:
         return {'error': str(exception)}
 
-# Post Method to sign In User /SignInUser?username=""&password=""
 
+# Sign Up Or Create New User
 
 @app.route('/SignUpUser', methods=['POST', 'GET'])
 def sign_up_user():
