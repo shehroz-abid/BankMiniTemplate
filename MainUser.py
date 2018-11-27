@@ -53,7 +53,7 @@ class MainUser:
         self.amount = amount
 
     def get_isadmin(self):
-        return self.isAdmin
+        return self.isadmin
 
     def set_isadmin(self, isadmin):
         self.isadmin = isadmin
