@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Welcome! | </title>
+
+    <!-- Bootstrap -->
+    <link href="https://colorlib.com/polygon/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://colorlib.com/polygon/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="https://colorlib.com/polygon/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="https://colorlib.com/polygon/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="https://colorlib.com/polygon/build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form action="/SignInUser", method="post">
+              <h1>Login Form</h1>
+              <div>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required="" />
+              </div>
+
+              <button type="submit" class="btn btn-default">Log In</button>
+            </form>
+            <div>
+                <a class="reset_pass" href="#">Lost your password?</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">New to site?
+                  <a href="#signup" class="to_register"> Create Account </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+              </div>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form action="/SignUpUser" , method="post">
+              <h1>Create Account</h1>
+              <div>
+                <input type="text" class="form-control" id="firstname" placeholder="Enter FirstName" name="firstname" required="" />
+              </div>
+              <div>
+                <input type="text" class="form-control" id="lastname" placeholder="Enter LastName" name="lastname" required="" />
+              </div>
+              <div>
+                <input type="text" class="form-control" id="new_username" placeholder="Enter Username" name="new_username" required="" />
+              </div>
+              <div class="item form-group">
+                <input type="password" class="form-control" id="new_password" placeholder="Enter Password" name="new_password" required="" />
+              </div>
+              <div class="item form-group">
+                <input type="password" class="form-control" id="re_new_password" data-validate-linked="new_password" placeholder="Re-Enter Password" name="re_new_password" required="" />
+              </div>
+              <div>
+                <input type="number" class="form-control" id="amount" placeholder="Enter Amount" name="amount" required="" />
+              </div>
+              <br>
+              <div>
+                <input type="checkbox" id="is_admin" placeholder="Enter IsAdmin" name="is_admin" value="admin" /> Are you an Admin?
+                <input type="hidden" value="not_admin" name="is_admin">
+              </div>
+              <br>
+              <button type="submit" class="btn btn-default">Create User</button>
+            </form>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Already a member ?
+                  <a href="#signin" class="to_register"> Log in </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+              </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://colorlib.com/polygon/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://colorlib.com/polygon/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="https://colorlib.com/polygon/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="https://colorlib.com/polygon/vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="https://colorlib.com/polygon/vendors/validator/validator.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="https://colorlib.com/polygon/build/js/custom.min.js"></script>
+  <!-- validator -->
+    <!--<script>
+      // initialize the validator function
+      validator.message.date = 'not a real date';
+
+      // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+      $('form')
+        .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+        .on('change', 'select.required', validator.checkField)
+        .on('keypress', 'input[required][pattern]', validator.keypress);
+
+      $('.multi.required').on('keyup blur', 'input', function() {
+        validator.checkField.apply($(this).siblings().last()[0]);
+      });
+
+      $('form').submit(function(e) {
+        e.preventDefault();
+        var submit = true;
+
+        // evaluate the form using generic validaing
+        if (!validator.checkAll($(this))) {
+          submit = false;
+        }
+
+        if (submit)
+          this.submit();
+
+        return false;
+      });
+    </script>
+    -->
+    <!-- /validator -->
+  </body>
+</html>
