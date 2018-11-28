@@ -9,12 +9,19 @@ class MainUser:
         self.isadmin = ""
         self.amount = ""
         self.data = ""
+        self.all_data = ""
 
     def get_data(self):
         return self.data
 
     def set_data(self, data):
         self.data = data
+
+    def get_all_data(self):
+        return self.all_data
+
+    def set_all_data(self, all_data):
+        self.all_data = all_data
 
     def get_userid(self):
         return self.userid
