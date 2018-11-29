@@ -82,7 +82,6 @@ def sign_in_user():
 
             sp_sign_in_user = "SELECT * FROM `User` WHERE `username`= %s"
             cursor.execute(sp_sign_in_user, username)
-
             data = cursor.fetchall()
             login_user.set_data(data)
             # data2 = json.dumps(data)
@@ -96,7 +95,6 @@ def sign_in_user():
                     login_user.set_lastname(data[0][4])
                     login_user.set_amount(data[0][5])
                     login_user.set_isadmin(data[0][6])
-
                     session['username'] = login_user.get_username()
                     return redirect(url_for('success', name=login_user.get_username()))
                     # return render_template('dashboard.html', data = login_user.get_data(),
