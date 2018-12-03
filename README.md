@@ -1,5 +1,5 @@
 # BankMiniTemplate
-This is the demo application for python flask with Mysql.
+This is the demo application for python flask with Mysql testbranch.
 # Prerequisites
 -Install Xampp & Run Myphpadmin for DB.<br />
 -Install PyCharm or any tool suitable to develop python application.<br />
