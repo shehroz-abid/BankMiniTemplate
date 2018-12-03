@@ -1,0 +1,129 @@
+
+"""def abort_user_isNotadmin(userid):
+    if not user.isAdmin:
+        abort(404, message="User is not admin".format(userid))
+
+def abort_user_isNotavailable(username):
+    if not user.username:
+        abort(404, message="User is not available".format(username))
+"""
+
+
+'''user_amount = int.login_user.get_amount()
+            if amount > 0:
+                new_amount = user_amount + amount
+            elif amount < 0:
+                new_amount = user_amount - amount
+            else:
+                return {"no change require"}'''
+
+
+
+@app.route('/SignInUser/<string:username>&<string:password>', methods=['POST'])
+def sign_in_user(username, password):
+
+    try:
+        username = request.form['username']
+        password = request.form['pwd']
+        conn = mysql.connect()
+        cursor = conn.cursor()
+
+        sp_sign_in_user = "SELECT * FROM `User` WHERE `username`= %s"
+        cursor.execute(sp_sign_in_user, username)
+
+        #cursor.callproc('sp_SignInUser', (_userUsername,))
+
+        data = cursor.fetchall()
+        data2 = json.dumps(data)
+
+        if len(data) > 0:
+                loginuser.set_userid(data[0][0])
+                loginuser.set_username(data[0][1])
+                loginuser.set_password(data[0][2])
+                loginuser.set_firstname(data[0][3])
+                loginuser.set_lastname(data[0][4])
+                loginuser.set_amount(data[0][5])
+                loginuser.set_isadmin(data[0][6])
+
+                return 'OK'+username+"  " + data2 + loginuser.get_username()
+                return {'Username': username, 'Password': password}
+
+        else:
+            return 'NotOK'
+            return {'status': 100, 'message': 'Authentication failure'}
+
+    except Exception as e:
+        return 'EXPOK,'+username+"  " + data2 + loginuser.get_username()
+        return {'error': str(e)}
+
+
+
+
+@app.route('/SignUpUser/<string:username>&<string:password>&<string:firstname>&<string:lastname>&<string:amount>&<string:is_admin>', methods=['POST'])
+def sign_up_user(username, password, firstname, lastname, amount, is_admin):
+    try:
+
+        conn = mysql.connect()
+        cursor = conn.cursor()
+
+        sp_check_exist = "SELECT * FROM User WHERE username = %(username)s"
+        cursor.execute(sp_check_exist, {'username': username})
+
+        data = cursor.fetchall()
+        if len(data) is 0:
+            sp_sign_up ="INSERT INTO `User` (`username`, `password`, `firstname`, `lastname`, `amount`, `is_admin`)" \
+                        " VALUES (%s,%s,%s,%s,%s,%s);"
+
+            cursor.execute(sp_sign_up, (username, password, firstname, lastname, amount, is_admin))
+            conn.commit()
+            return 'OK'
+            return {'StatusCode': '200', 'Message': 'User creation success'}
+        else:
+            return 'ElSEOK'
+            return {'StatusCode': '1000', 'Message': str(data[0])}
+
+        return {'username': _userUsername, 'password': _userPassword, 'firstname': _userFirstName,
+                'lastname': _userLastName, 'amount': _userAmount, 'isAdmin': _userIsAdmin}
+
+    except Exception as e:
+        return 'EXPOKZ'+username+password+firstname+lastname+amount+is_admin
+        return {'error': str(e)}
+
+
+
+
+@app.route('/UpdatePassword/<string:old_password>&<string:new_password>',  methods=['PUT', 'GET'])
+def update_password(old_password, new_password):
+    try:
+
+        conn = mysql.connect()
+        cursor = conn.cursor()
+
+        '''user_amount = int.loginuser.get_amount()
+
+        if amount > 0:
+            new_amount = user_amount + amount
+
+        elif amount < 0:
+            new_amount = user_amount - amount
+
+        else:
+            return {"no change require"}'''
+        if old_password == loginuser.get_password():
+
+            sp_update_amount = "UPDATE `User` SET `password` = %s WHERE `User`.`username` = %s"
+            cursor.execute(sp_update_amount, (new_password, loginuser.get_username()))
+            conn.commit()
+
+            loginuser.set_password(new_password)
+            return 'OK'+" "+new_password+loginuser.get_username()
+            return {'StatusCode': '200', 'Message': 'User Amount updated success'}
+        else:
+            return 'PSWRD INValid'
+
+    except Exception as e:
+        return 'EXPOK'+amount+loginuser.get_username()
+        return {'error': str(e)}
+
+
+
